@@ -7,8 +7,8 @@ You have been hired to build an inventory management system for your local junky
 1. Allow for four different vehicle types (listed below) to be created and edited.
     - For each Vehicle type, only display the relevant fields to the user
       - For example: If a a Coupe is being created/edited, do not show the "Automatic sliding doors" field.
-2. After each vehicle is created, register it using the `VehicleRegistrationService` (at `app/services/vehicle_registrateion_service.rb`) and permanently associate that registration ID with the vehicle.
-3. List all vehicles on `/vehicles` with their type, nickname, mileage rating and registration ID
+2. After each vehicle is created, register it using the `VehicleRegistrationService` (at [`app/services/vehicle_registration_service.rb`](app/services/vehicle_registration_service.rb)) and permanently associate that registration ID with the vehicle.
+3. List all vehicles on `http://localhost:3000/vehicles` with their type, nickname, mileage rating and registration ID
     - mileage rating is defined as:
         - low: mileage < 10,000
         - medium: 10,000 <= mileage < 100,000
@@ -33,8 +33,9 @@ You have been hired to build an inventory management system for your local junky
     - Mileage: integer
     - Wheels: 0-4, default: 4
     - Doors: 0-4, default: 4
+      - For each door: (**Tip**: Make sure everything else is working before addressing this)
+        - Sliding: boolean, default: false 
     - Engine status: works, fixable, junk, default: works
-    - Automatic sliding doors: boolean, default: false
 - Motorcycle
     - Nickname: string
     - Mileage: integer
@@ -46,19 +47,17 @@ You have been hired to build an inventory management system for your local junky
 
 **Please don't spend more than two (2) hours on this project!**
 
-The goal is not to add every bell, whistle, feature and optimization that you can think of. The goal is to both see an example of working code that you write and see how you do implementing realistic (albeit contrived...) features. 
+The goal is not to add every bell, whistle, feature and optimization that you can think of. The goal is to both see an example of working code that you write and see how you do implementing realistic (albeit contrived...). 
 
 You will be judged on how accurately you complete the above tasks and the quality of the code you write. 
 
+The Rails app already has scaffolding generated for a Vehicle model as an example. You are free to make any and all changes you'd like to complete the assignment.
+
 ## Getting Started
 
-Fork this repository on GitHub and push all your changes to your forked repo.
+See `SETUP.md` for instructions on how to get your development envrionment working. If you have any questions, especially regarding setup, please contact us so we can get it sorted out ASAP!
 
-See `SETUP.md` for instructions on how to get your development envrionment working. 
-
-## Submitting Your Finished Project
-
-When you are finished, open a pull request back to your assigned branch in the main repository. Feel free to include any notes in the Pull Request that you'd like to share with us.
+When you are finished, push all changes to the repo on GitHub and email us that you've finished! Feel free to to open a pull request or leave any other comments on specific commits or the repo as you see fit.
 
 ## Notes
 
