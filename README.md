@@ -55,7 +55,7 @@ The Rails app already has scaffolding generated for a Vehicle model as an exampl
 
 ## Getting Started
 
-See `SETUP.md` for instructions on how to get your development envrionment working. If you have any questions, especially regarding setup, please contact us so we can get it sorted out ASAP!
+See [`SETUP.md`](SETUP.md) for instructions on how to get your development envrionment working. If you have any questions, especially regarding setup, please contact us so we can get it sorted out ASAP!
 
 When you are finished, push all changes to the repo on GitHub and email us that you've finished! Feel free to to open a pull request or leave any other comments on specific commits or the repo as you see fit.
 
