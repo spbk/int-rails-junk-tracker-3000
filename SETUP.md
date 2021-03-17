@@ -3,13 +3,16 @@
 
 There are a few different ways to set up your environment:
 
-1. Using VS Code + Remote Container extension (Recommended)
+1. Using Docker + VS Code + Remote Container extension
 2. Using Docker Compose via command line
 3. Running Rails directly via command line
 
-Note if using Docker (options 1 or 2): if you are getting errors when trying to install Ruby gems related to being out or memory, you may need to increase the allowed amount of memory used by Docker. 
+Notes if using Docker (options 1 or 2): 
 
-### Using VSCode + Remote Container extension (Recommended)
+- You will need to have Docker already installed on your local machine. If you don't already have it installed, please use option 3 - it isn't necessary to learn a new tool (although it's very handy) for this exercise.
+- If you are getting errors when trying to install Ruby gems related to being out or memory, you may need to increase the allowed amount of memory used by Docker. 
+
+### Using Docker + VSCode + Remote Container extension
 
 Open the root of this project in VS Code. If it is not already installed, you will be prompted to install the [Remote-Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension.
 
