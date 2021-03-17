@@ -1,0 +1,30 @@
+<%= form_with(model: vehicle) do |form| %>
+  <% if vehicle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
+
+      <ul>
+        <% vehicle.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%# 
+    The React component is embedded inside the form so the form works by default.
+    If you'd like to replace the entire form, you may also disable CSRF protection by setting
+    config.action_controller.default_protect_from_forgery = false in application.rb.
+    
+    See:
+    https://guides.rubyonrails.org/security.html#csrf-countermeasures
+    https://guides.rubyonrails.org/configuring.html
+
+    Obviously, we would never do this in a production environment :)
+  %>
+  <%= react_component("CreativeForm", props: { vehicle: vehicle.attributes }, prerender: false) %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
