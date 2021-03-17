@@ -47,7 +47,7 @@ You have been hired to build an inventory management system for your local junky
 
 **Please don't spend more than two (2) hours on this project!**
 
-The goal is not to add every bell, whistle, feature and optimization that you can think of. The goal is to both see an example of working code that you write and see how you do implementing realistic (albeit contrived...). 
+The goal is not to add every bell, whistle, feature and optimization that you can think of. The goal is to both see an example of working code that you write and see how you do implementing realistic (albeit contrived...) features. 
 
 You will be judged on how accurately you complete the above tasks and the quality of the code you write. 
 

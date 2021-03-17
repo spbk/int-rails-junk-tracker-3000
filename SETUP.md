@@ -46,7 +46,7 @@ And view logs for each container in a separate shell using `docker-compose logs`
     # Use the -f flag to tail the logs
     docker-compose logs -f app
 
-To start a session inside the running Rails app container run:
+To start a bash session inside the running Rails app container run:
 
     docker-compose exec app /bin/bash
 
