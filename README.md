@@ -10,7 +10,7 @@ You have been hired to build an inventory management system for your local junky
 3. Whenever a vehicle is created or updated, create or update a text advertisement for the vehicle using the [`VehiclePromotionService`](app/services/vehicle_promotion_service.rb) to promote the vehicle to the public.
     - When an advertiserment is first created an ID is returned to reference the created advertisemend. That ID should be used when updating an advertiserment for a partiuclar verhicle whenever its details are updated.
     - Use [`AdBuilder`](app/services/ad_builder.rb) to generate text advertiserments for vehicles. [`ad_builder_spec.rb`](spec/ad_builder_spec.rb) contains failing tests that describe what those text ads should look like. Implement `AdBuilder.create_ad` so that all of the existing tests pass
-        - We use [RSpec](https://rspec.info/), but if you're more comfortable with other testing frameworks or tools, feel free to use those instead.
+        - We use [RSpec](https://rspec.info/), but if you're more comfortable with other testing frameworks or tools feel free to use those instead.
 4. List all vehicles on `http://localhost:3000/vehicles` with their 
     - type
     - nickname
