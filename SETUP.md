@@ -11,7 +11,7 @@ Notes if using Docker (options 1 or 2):
 
 - You will need to have Docker already installed on your local machine. If you don't already have it installed, please use option 3 - it isn't necessary to learn a new tool (although it's very handy) for this exercise.
 - If you are getting errors when trying to install Ruby gems related to being out or memory, you may need to increase the allowed amount of memory used by Docker. 
-- As a last resort, updating the `docker-compose.yml` file to build the local
+- As a last resort, updating the `docker compose.yml` file to build the local
 container should get you up and running.
 
 ```yaml
@@ -48,20 +48,20 @@ You should now be able to access the app at `http://localhost:3000`.
 
 To run the main Rails application container (`app`) 
 
-    docker-compose up
+    docker compose up
 
 You can also run the container in the background using 
 
-    docker-compose up -d 
+    docker compose up -d 
 
-And view logs for each container in a separate shell using `docker-compose logs`. For example:
+And view logs for each container in a separate shell using `docker compose logs`. For example:
 
     # Use the -f flag to tail the logs
-    docker-compose logs -f app
+    docker compose logs -f app
 
 To start a bash session inside the running Rails app container run:
 
-    docker-compose exec app /bin/bash
+    docker compose exec app /bin/bash
 
 Here you should have access to `bundle`, `gem`, `node` and `rails`.
 
@@ -75,7 +75,7 @@ You should now be able to access the app at `http://localhost:3000`.
 
 ### Running Rails directly via command line
 
-Ensure you have Ruby 2.7.2 installed. (Other versions may work, however this has only been tested on 2.7.2) and [Bundler](https://bundler.io/) (e.g. `gem install bundler`).
+Ensure you have Ruby 2.7.2 installed. (Other versions may work, however this project has only been tested on 2.7.2 and requires [Bundler](https://bundler.io/) to be installed).
 
 Next, install all gems via Bundler:
 
