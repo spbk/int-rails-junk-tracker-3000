@@ -2,38 +2,6 @@
 
 You have been hired to build an inventory management system for your local junkyard! While they accept may different items, old vehicles are their most popular, so in addition to just tracking what's in stock, they also want to run up-to-date ads for everything they have.
 
-## Setup
-This template uses a custom docker image to avoid long build times. You can start
-the container with:
-
-```shell
-$ docker compose up -d
-```
-
-Once the container is up, run the following to open a shell inside the container
-and run the following commands:
-
-```shell
-$ docker compose exec app /bin/bash
-$ bin/rails db:migrate
-$ bin/rake assets:precompile
-```
-
-That will run the pending migration and set up Webpacker properly so that the UI
-will render correctly. If you encounter any issues, please reach out to us! It is
-not our intention for you to debug our code.
-
-As a last resort, updating the `docker-compose.yml` file to build the local
-container should get you up and running.
-
-```yaml
-services:
-  app:
-    image: spbk/rails-junk-tracker-3000:latest # remove this line
-    build: . # add this line
-    ...
-```
-
 ## Tasks
 
 1. Allow for four different vehicle types (listed below) to be created, updated and destroyed with the attributes described below.
