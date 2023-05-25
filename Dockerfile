@@ -27,13 +27,6 @@ RUN \
   apt-get update && apt-get install yarn
 
 
-# Install pngout support for image_optim. From what I gather this is the only way to do it
-# binary pulled from: http://www.jonof.id.au/kenutils
-# RUN \
-#     curl -s -o pngout.tar.gz http://www.jonof.id.au/files/kenutils/pngout-20200115-linux-static.tar.gz && \
-#     tar -xf ./pngout.tar.gz && \
-#     mv pngout-20200115-linux-static/i686/pngout-static /usr/local/bin/pngout
-
 # Configure the main working directory. This is the base
 # directory used in any further RUN, COPY, and ENTRYPOINT
 # commands.
@@ -45,7 +38,7 @@ WORKDIR /app
 # will be cached unless changes to one of those two files
 # are made.
 COPY Gemfile Gemfile.lock ./
-RUN gem install bundler && bundle install --jobs 20 --retry 5
+RUN bundle install
 
 
 # Copy the main application.
