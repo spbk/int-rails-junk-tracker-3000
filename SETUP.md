@@ -11,7 +11,7 @@ Notes if using Docker (options 1 or 2):
 
 - You will need to have Docker already installed on your local machine. If you don't already have it installed, please use option 3 - it isn't necessary to learn a new tool (although it's very handy) for this exercise.
 - If you are getting errors when trying to install Ruby gems related to being out or memory, you may need to increase the allowed amount of memory used by Docker. 
-- As a last resort, updating the `docker compose.yml` file to build the local
+- As a last resort, updating the `docker-compose.yml` file to build the local
 container should get you up and running.
 
 ```yaml
