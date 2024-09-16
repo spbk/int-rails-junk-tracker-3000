@@ -31,7 +31,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
+  gem 'debug'
   gem "rspec-rails", "~> 6.0"
 end
 
@@ -54,8 +54,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "ruby-debug-ide", "~> 0.7.2"
-
-gem "debase", "~> 0.2.4"
-
 gem "react_on_rails", "= 12.0"
+
+gem "psych", '~> 3.0'

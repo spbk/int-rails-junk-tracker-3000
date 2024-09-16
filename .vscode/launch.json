@@ -3,9 +3,9 @@
     "configurations": [
         {
             "name": "Rails Server",
-            "type": "Ruby",
+            "type": "rdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/bin/rails",
+            "script": "${workspaceRoot}/bin/rails",
             "args": [
                 "server",
                 "-b",
@@ -14,13 +14,14 @@
                 "3000",
                 "--pid",
                 "tmp/pids/app.pid"
-            ]
+            ],
+            "internalConsoleOptions": "openOnSessionStart"
         },
         {
             "name": "RSpec - active spec file only",
-            "type": "Ruby",
+            "type": "rdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/bin/bundle",
+            "script": "${workspaceRoot}/bin/bundle",
             "useBundler": true,
             "args": [
                 "exec",
@@ -31,9 +32,9 @@
             ]
         },        {
             "name": "RSpec - all",
-            "type": "Ruby",
+            "type": "rdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/bin/bundle",
+            "script": "${workspaceRoot}/bin/bundle",
             "useBundler": true,
             "args": [
                 "exec",

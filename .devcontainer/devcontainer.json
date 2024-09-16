@@ -18,14 +18,17 @@
 	"workspaceFolder": "/app",
 
 	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"terminal.integrated.shell.linux": null
-	},
+  "customizations": {
+    "vscode": {
+      // Set *default* container specific settings.json values on container create.
+      "terminal.integrated.shell.linux": null,
 
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"rebornix.ruby"
-	]
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "KoichiSasada.vscode-rdbg"
+      ]
+    }
+  }
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
