@@ -16,9 +16,23 @@ describe "AdBuilder" do
     # (Feel free to modify any source or test code, as long as the desired 
     # functionality captured by these specs are maintained.)
 
+    let(:registration_id) { "415Hn3JTu7obqNj151gmuscoq0kWCy" }
+
+    before do
+      allow(VehicleRegistrationService)
+        .to receive(:register_vehicle)
+        .and_return(registration_id)
+    end
+
     describe "when vehicle is a Sedan" do
       it "looks like this" do
-        byebug
+
+        vehicle = Sedan.create!(
+          nickname: "2020 Honda Civic",
+          mileage: 5134)
+
+        engine = Engine.create!(vehicle: vehicle)
+
         expect(AdBuilder.create_ad(vehicle)).to eql(<<~AD)
           2020 Honda Civic
           Registration number: 415Hn3JTu7obqNj151gmuscoq0kWCy
