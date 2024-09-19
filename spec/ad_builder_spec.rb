@@ -18,6 +18,7 @@ describe "AdBuilder" do
 
     describe "when vehicle is a Sedan" do
       it "looks like this" do
+        byebug
         expect(AdBuilder.create_ad(vehicle)).to eql(<<~AD)
           2020 Honda Civic
           Registration number: 415Hn3JTu7obqNj151gmuscoq0kWCy

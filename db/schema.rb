@@ -10,12 +10,73 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_16_224014) do
+ActiveRecord::Schema.define(version: 2024_09_19_200648) do
+
+  create_table "advertisements", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "vehicle_id", null: false
+    t.text "display"
+    t.index ["vehicle_id"], name: "index_advertisements_on_vehicle_id"
+  end
+
+  create_table "doors", force: :cascade do |t|
+    t.integer "vehicle_id", null: false
+    t.boolean "sliding", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["vehicle_id"], name: "index_doors_on_vehicle_id"
+  end
+
+  create_table "engines", force: :cascade do |t|
+    t.integer "vehicle_id", null: false
+    t.string "status", default: "works", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["vehicle_id"], name: "index_engines_on_vehicle_id"
+  end
+
+  create_table "parts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "type"
+    t.string "status", default: "works"
+  end
+
+  create_table "parts_vehicles", id: false, force: :cascade do |t|
+    t.integer "vehicle_id", null: false
+    t.integer "part_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["part_id"], name: "index_parts_vehicles_on_part_id"
+    t.index ["vehicle_id"], name: "index_parts_vehicles_on_vehicle_id"
+  end
+
+  create_table "seats", force: :cascade do |t|
+    t.integer "vehicle_id", null: false
+    t.string "status", default: "works", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["vehicle_id"], name: "index_seats_on_vehicle_id"
+  end
+
+  create_table "vehicle_types", force: :cascade do |t|
+    t.string "type", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "vehicles", force: :cascade do |t|
     t.string "nickname"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "vehicle_type_id", null: false
+    t.index ["vehicle_type_id"], name: "index_vehicles_on_vehicle_type_id"
   end
 
+  add_foreign_key "advertisements", "vehicles"
+  add_foreign_key "doors", "vehicles"
+  add_foreign_key "engines", "vehicles"
+  add_foreign_key "seats", "vehicles"
+  add_foreign_key "vehicles", "vehicle_types"
 end
