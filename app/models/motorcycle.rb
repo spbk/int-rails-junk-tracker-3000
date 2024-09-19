@@ -1,4 +1,7 @@
 class Motorcycle < Vehicle
-  has_one :engine
+  VEHICLE_TYPE = "motorcycle"
+
   has_one :seat
+
+  default_scope { joins(:vehicle_type).where(vehicle_type: { name: "motorcycle" })}
 end

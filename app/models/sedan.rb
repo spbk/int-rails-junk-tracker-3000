@@ -1,4 +1,3 @@
 class Sedan < Vehicle
-  has_many :doors
-  has_one :engine
+  VEHICLE_TYPE = "sedan"
 end

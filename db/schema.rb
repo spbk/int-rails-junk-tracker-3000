@@ -36,22 +36,6 @@ ActiveRecord::Schema.define(version: 2024_09_19_200648) do
     t.index ["vehicle_id"], name: "index_engines_on_vehicle_id"
   end
 
-  create_table "parts", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "type"
-    t.string "status", default: "works"
-  end
-
-  create_table "parts_vehicles", id: false, force: :cascade do |t|
-    t.integer "vehicle_id", null: false
-    t.integer "part_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["part_id"], name: "index_parts_vehicles_on_part_id"
-    t.index ["vehicle_id"], name: "index_parts_vehicles_on_vehicle_id"
-  end
-
   create_table "seats", force: :cascade do |t|
     t.integer "vehicle_id", null: false
     t.string "status", default: "works", null: false
@@ -61,13 +45,15 @@ ActiveRecord::Schema.define(version: 2024_09_19_200648) do
   end
 
   create_table "vehicle_types", force: :cascade do |t|
-    t.string "type", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "vehicles", force: :cascade do |t|
     t.string "nickname"
+    t.string "registration_id"
+    t.integer "mileage", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "vehicle_type_id", null: false

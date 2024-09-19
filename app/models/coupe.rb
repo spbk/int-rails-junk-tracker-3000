@@ -1,4 +1,3 @@
 class Coupe < Vehicle
-  has_one :engine
-  has_many :doors
+  VEHICLE_TYPE = "coupe"
 end
