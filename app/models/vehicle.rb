@@ -10,4 +10,8 @@ class Vehicle < ApplicationRecord
     self.vehicle_type =
       VehicleType.find_or_create_by(name: self.class::VEHICLE_TYPE)
   end
+
+  def type
+    self.class.VEHICLE_TYPE
+  end
 end
