@@ -3,11 +3,11 @@
 
 class VehiclePromotionService
   def self.create_ad(vehicle)
-    Advertisement.create!(vehicle: vehicle, display: vehicle.create_ad_text).id
+    Advertisement.create!(vehicle: vehicle, display: AdBuilder.create_ad(vehicle)).id
   end
 
   def self.update_ad(ad_id, vehicle)
-    Advertisement.find(ad_id).update!(display: vehicle.create_ad_text)
+    Advertisement.find(ad_id).update!(display: AdBuilder.create_ad(vehicle))
     ad_id
   end
 end

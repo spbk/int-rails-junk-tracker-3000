@@ -2,9 +2,10 @@ class Vehicle < ApplicationRecord
   include ActionView::Helpers::NumberHelper
 
   belongs_to :vehicle_type
-  has_one :engine
-  has_many :doors
-  has_many :advertisements
+  has_one :engine, dependent: :destroy
+  has_many :doors, dependent: :destroy
+  has_many :advertisements, dependent: :destroy
+  has_one :seat, dependent: :destroy
 
   before_validation :set_vehicle_type
   before_create :register_vehicle

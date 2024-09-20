@@ -1,8 +1,6 @@
 class Motorcycle < Vehicle
   VEHICLE_TYPE = "motorcycle"
 
-  has_one :seat, foreign_key: :vehicle_id
-
   default_scope { joins(:vehicle_type).where(vehicle_type: { name: VEHICLE_TYPE })}
 
   def create_ad_text

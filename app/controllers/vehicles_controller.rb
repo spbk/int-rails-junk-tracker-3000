@@ -4,12 +4,11 @@ class VehiclesController < ApplicationController
   # GET /vehicles or /vehicles.json
   def index
     @vehicles = Vehicle.all
-
-    pp @vehicles
   end
 
   # GET /vehicles/1 or /vehicles/1.json
   def show
+    @vehicle = Vehicle.find(params["id"])
   end
 
   # GET /vehicles/new
@@ -23,15 +22,26 @@ class VehiclesController < ApplicationController
 
   # POST /vehicles or /vehicles.json
   def create
-    @vehicle = Vehicle.new(vehicle_params)
+    res = CreateVehicleService.create_from_request_params(params)
 
     respond_to do |format|
-      if @vehicle.save
-        format.html { redirect_to @vehicle, notice: "Vehicle was successfully created." }
-        format.json { render :show, status: :created, location: @vehicle }
+      if res[:status] == :ok
+        @vehicle = res[:vehicle]
+
+        format.html do
+          Rails.logger.info("in HTML")
+
+          redirect_to "/vehicles/#{@vehicle.id}", notice: "Vehicle was successfully created."
+        end
+
+        format.json do
+          Rails.logger.info("in JSON")
+          render :show, status: :created, location: "/vehicles/#{@vehicle.id}"
+        end
+
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
+        format.json { render json: res[:messages], status: :unprocessable_entity }
       end
     end
   end
@@ -52,20 +62,12 @@ class VehiclesController < ApplicationController
   # DELETE /vehicles/1 or /vehicles/1.json
   def destroy
     @vehicle.destroy
-    respond_to do |format|
-      format.html { redirect_to vehicles_url, notice: "Vehicle was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_vehicle
-      @vehicle = Vehicle.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def vehicle_params
-      params.permit(:nickname)
-    end
+  def set_vehicle
+    @vehicle = Vehicle.find(params[:id])
+  end
 end

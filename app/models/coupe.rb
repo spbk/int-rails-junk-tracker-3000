@@ -1,6 +1,8 @@
 class Coupe < Vehicle
   VEHICLE_TYPE = "coupe"
 
+  self.table_name = "vehicles"
+
   default_scope { joins(:vehicle_type).where(vehicle_type: { name: VEHICLE_TYPE })}
 
   def create_ad_text
