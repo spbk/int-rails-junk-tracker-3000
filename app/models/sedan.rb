@@ -1,7 +1,5 @@
 class Sedan < Vehicle
-  VEHICLE_TYPE = "sedan"
-
-  default_scope { joins(:vehicle_type).where(vehicle_type: { name: VEHICLE_TYPE })}
+  validate :door_count
 
   def create_ad_text
     <<~ADD
@@ -10,5 +8,11 @@ class Sedan < Vehicle
       Mileage: #{mileage_verbiage}
       Engine: #{engine_status}
     ADD
+  end
+
+  def door_count
+    return if doors.count.in?(0..4)
+
+    errors.add(:doors, "must have between 0 and 4 doors")
   end
 end

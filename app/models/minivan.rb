@@ -1,7 +1,5 @@
-class MiniVan < Vehicle
-  VEHICLE_TYPE = "mini-van"
-
-  default_scope { joins(:vehicle_type).where(vehicle_type: { name: VEHICLE_TYPE })}
+class Minivan < Vehicle
+  validate :door_count
 
   def create_ad_text
     <<~ADD
@@ -23,5 +21,13 @@ class MiniVan < Vehicle
 
   def sliding_door_count
     doors.where(sliding: true).count
+  end
+
+  private
+
+  def door_count
+    return if doors.count.in?(0..4)
+
+    errors.add(:doors, "must have between 0 and 4 doors")
   end
 end

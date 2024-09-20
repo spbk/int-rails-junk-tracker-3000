@@ -1,7 +1,7 @@
 class Motorcycle < Vehicle
-  VEHICLE_TYPE = "motorcycle"
+  # VEHICLE_TYPE = "motorcycle"
 
-  default_scope { joins(:vehicle_type).where(vehicle_type: { name: VEHICLE_TYPE })}
+  # default_scope { joins(:vehicle_type).where(vehicle_type: { name: VEHICLE_TYPE })}
 
   def create_ad_text
     <<~ADD

@@ -1,26 +1,18 @@
 class Vehicle < ApplicationRecord
   include ActionView::Helpers::NumberHelper
 
-  belongs_to :vehicle_type
   has_one :engine, dependent: :destroy
   has_many :doors, dependent: :destroy
   has_many :advertisements, dependent: :destroy
   has_one :seat, dependent: :destroy
 
-  before_validation :set_vehicle_type
-  before_create :register_vehicle
+  after_create :register_vehicle
+
+  validates :nickname, presence: true
+  validates :mileage, presence: true
 
   def register_vehicle
     self.registration_id = VehicleRegistrationService.register_vehicle(self)
-  end
-
-  def set_vehicle_type
-    self.vehicle_type =
-      VehicleType.find_or_create_by(name: self.class::VEHICLE_TYPE)
-  end
-
-  def type
-    self.class.VEHICLE_TYPE
   end
 
   def mileage_verbiage
@@ -35,5 +27,9 @@ class Vehicle < ApplicationRecord
 
   def engine_status
     engine.status.capitalize
+  end
+
+  def as_json(_)
+    super(include: [:engine, :doors, :seat, :advertisements])
   end
 end

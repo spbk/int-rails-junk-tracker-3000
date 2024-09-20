@@ -46,7 +46,7 @@ describe "AdBuilder" do
 
     describe "when vehicle is a Mini-Van" do
       it "looks like this" do
-        vehicle = MiniVan.create!(
+        vehicle = Minivan.create!(
           nickname: "2009 Dodge Caravan",
           mileage: 5134)
 

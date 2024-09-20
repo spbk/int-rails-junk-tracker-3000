@@ -14,11 +14,9 @@ RSpec.describe CreateVehicleService do
       params = {
         "nickname"=>"Duc",
         "mileage"=>"122",
-        "numDoors"=>"0",
-        "numSlidingDoors"=>"0",
-        "engineStatus"=>"works",
-        "seatStatus"=>"works",
-        "vehicleType"=>"motorcycle"
+        "engine_status"=>"works",
+        "seat_status"=>"works",
+        "vehicle_type"=>"motorcycle"
       }
 
       res = described_class.create_from_request_params(params)
@@ -35,11 +33,9 @@ RSpec.describe CreateVehicleService do
     params = {
       "nickname"=>"Duc",
       "mileage"=>"122",
-      "numDoors"=>"0",
-      "numSlidingDoors"=>"0",
-      "engineStatus"=>"works",
-      "seatStatus"=>"works",
-      "vehicleType"=>"motorcycle"
+      "engine_status"=>"works",
+      "seat_status"=>"works",
+      "vehicle_type"=>"motorcycle"
     }
 
     vehicle = described_class.create_from_request_params(params)[:vehicle]
