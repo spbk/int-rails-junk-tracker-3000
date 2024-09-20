@@ -30,6 +30,6 @@ class Vehicle < ApplicationRecord
   end
 
   def as_json(_)
-    super(include: [:engine, :doors, :seat, :advertisements])
+    super(include: [:engine, :doors, :seat, :advertisements]).merge(type: type)
   end
 end
