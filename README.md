@@ -1,3 +1,91 @@
+# Approach
+
+I focused on the backend API and making flexible data models in anticipation of changing requirements.
+
+I ended up ripping out most of the controller code pertaining to views and javascript and making this a simple json API as I was burning up a lot of time trying to make the existing templates work with how I modeled the data.
+
+All tests are in the spec directory and I tried to cover everything fairly well, but I didn't test every edge case or validation for the sake of time.  The major code paths are exercised.  There are some simple validations and logic around things like status names and the number of doors, but I only got into that so far as time would allow.
+
+There is seed data - running `rails db:seed` will give you one of each vehicle and their associations.  Running `curl http://localhost:3000/vehicles | jq` will display a json list of vehicles, their parts, their ads, etc.
+
+The params for the API can be found in the tests.  I'd like to write some param validation if time would allow as well as document what is available.
+
+Some simple commands to create/update/delete
+
+- create
+```
+curl --header "Content-Type: application/json" \
+    --request POST \
+    --data '{"nickname":"R8", "mileage":"234324", "engine_status":"works", "vehicle_type":"coupe", "num_regular_doors": "2"}' \
+    http://localhost:3000/vehicles
+```
+
+This will respond with: (The ids will obviously be different)
+```
+{
+  "id": 16,
+  "nickname": "R8",
+  "registration_id": "cRoEWX7Gz3PE3v2DcF01fosfhAsskA",
+  "mileage": 234324,
+  "created_at": "2024-09-20T21:06:31.863Z",
+  "updated_at": "2024-09-20T21:06:31.863Z",
+  "engine": {
+    "id": 8,
+    "vehicle_id": 16,
+    "status": "works",
+    "created_at": "2024-09-20T21:06:31.894Z",
+    "updated_at": "2024-09-20T21:06:31.894Z"
+  },
+  "doors": [
+    {
+      "id": 19,
+      "vehicle_id": 16,
+      "sliding": false,
+      "created_at": "2024-09-20T21:06:31.907Z",
+      "updated_at": "2024-09-20T21:06:31.907Z"
+    },
+    {
+      "id": 20,
+      "vehicle_id": 16,
+      "sliding": false,
+      "created_at": "2024-09-20T21:06:31.920Z",
+      "updated_at": "2024-09-20T21:06:31.920Z"
+    }
+  ],
+  "advertisements": [
+    {
+      "id": 8,
+      "created_at": "2024-09-20T21:06:31.943Z",
+      "updated_at": "2024-09-20T21:06:31.943Z",
+      "vehicle_id": 16,
+      "display": "R8\nRegistration number: cRoEWX7Gz3PE3v2DcF01fosfhAsskA\nMileage: High (234,324)\nEngine: Works\n"
+    }
+  ]
+}
+```
+
+- update (updating the mileage and the nickname, the ad also gets updated)
+```
+curl --header "Content-Type: application/json" \
+    --request PUT \
+    --data '{"nickname":"R8 Avant", "mileage":"10"}' \
+    http://localhost:3000/vehicles/16
+```
+
+- delete
+```
+curl -X DELETE http://localhost:3000/vehicles/16
+```
+
+- list all vehicles
+```
+curl http://localhost:3000/vehicles | jq
+```
+
+
+
+
+
 # Junk Tracker 3000
 
 You have been hired to build an inventory management system for your local junkyard! While they accept may different items, old vehicles are their most popular, so in addition to just tracking what's in stock, they also want to run up-to-date ads for everything they have.
@@ -41,26 +129,3 @@ You have been hired to build an inventory management system for your local junky
     - Engine status: works, fixable, junk, default: works
     - Seat status: works, fixable, junk, default: works
 
-## Guildelines
-
-**Please don't spend more than two (2) hours on this project!**
-
-The goal is not to add every bell, whistle, feature and optimization that you can think of. The goal is to both see an example of working code that you write and see how you do implementing realistic (albeit contrived...) features. 
-
-You will be judged on how accurately you complete the above tasks and the quality of the code you write (including tests). 
-
-The Rails app already has some scaffolding for a Vehicle model as an example. You are free to make any and all changes you'd like to complete the assignment.
-
-## Getting Started
-
-See [`SETUP.md`](SETUP.md) for instructions on how to get your development envrionment working. If you have any questions, especially regarding setup, please contact us so we can get it sorted out ASAP!
-
-When you are finished, push all changes to the repo on GitHub and email us that you've finished! Feel free to to open a pull request or leave any other comments on specific commits or the repo as you see fit.
-
-## Notes
-
-- If you have any issues at all, especially with getting your development environment working, please reach out to us ASAP. Our intention isn't to make you troubleshoot an existing project's configuration. (You wouldn't spend the majority of your work day doing that in real life). We are more than happy to do that for you!
-- Make your first priority getting everything to work! Save the bonus points for after you get things working all the way through.
-- Do not worry about server-side rendering of any JavaScript React components
-- Feel free to turn off CSRF protection to keep things simple
-- Add any additional ruby gems, npm modules or other tools you'd like
